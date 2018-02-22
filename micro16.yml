@@ -1,1 +1,16 @@
+eureka:
   instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka-service/
+
+server:
+  port: ${PORT:9010}
+
+---
+
+message: nihao Shanghai!!!!!!!! micro16 89898
+
+
+    
