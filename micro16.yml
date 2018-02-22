@@ -6,6 +6,6 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8800/eureka/
       
-message: nihao Shanghai!!!!!!!! micro16 QWERTY Change AZERTY
+message: nihao Shanghai!!!!!!!! micro16 QWERTY Change AZERTY 11111
 
     
