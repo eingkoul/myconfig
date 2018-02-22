@@ -7,16 +7,6 @@ eureka:
       defaultZone: http://localhost:8800/eureka/
       
  ---
-endpoints:
-    health:
-        sensitive: false
-        
----
-management:
-    endpoint:
-        health:
-            refresh: 
-                enabled: true
             
 message: nihao Shanghai!!!!!!!! micro16 QWERTY Change AZERTY 11111
 
