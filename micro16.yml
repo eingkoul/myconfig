@@ -6,7 +6,22 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8800/eureka/
       
- ---
+---
+
+spring:
+  gorm:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://localhost/pocdeclaration?useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: Tkbl20TT
+    pooled: true
+    jmxExport: true
+    driverClassName: com.mysql.jdbc.Driver
             
 message: nihao Shanghai!!!!!!!! micro16 QWERTY Change AZERTY 11111
 
