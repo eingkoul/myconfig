@@ -1,0 +1,12 @@
+server:
+  port: 9999
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8800/eureka/
+      
+
+message: Bonjour de Montreal!!!!!!!! PROXY SIGMI CLIENT
+
+    
