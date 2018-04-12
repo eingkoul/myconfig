@@ -1,11 +1,12 @@
 server:
     port: 8765
+    contextPath: /web-app
 
 message: Bonjour de Montreal!!!!!!!! PROXY SIGMI CLIENT
 
 authserver:
     hostname: localhost
-    port: 9020
+    port: 9025
     contextPath: userauth
     
 # Define the routes which determine what URL are serviced by what applications.
@@ -17,14 +18,55 @@ authserver:
 # requests using zuul
 zuul:
   routes:
-    user-webservice: /api/user/**
-    task-webservice: /api/task/**
+    user-webservice: /api/usagers/**
     web-portal: /**
     user:
-      path: /api/loggedinuser/**
+      path: /api/login/**
       stripPrefix: true
       url: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}
 # Define the Eureka server that handles service registration
+# Define settings for Single-Sign-On with OAuth2; this means that we need to relay the OAuth token
+# to the subsequent resources that are proxied by the Zuul api gateway.
+
+# The home definition tells us to allow anonymous access (secure: false) to the static resources that
+# are accessed through the Zuul proxy.
+
+# Remaining properties are used by the OAuth2 SSO to determine where the authorization server is and
+# what client crendentials to use to access that server.
+spring:
+  oauth2:
+    sso:
+      home:
+        secure: false
+        path: /,/**/*.html
+    client:
+      accessTokenUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/oauth/token
+      userAuthorizationUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/oauth/authorize
+      clientId: client
+      clientSecret: secret
+# The userInfoUri is used to authenticate the user so that SSO token can be relayed forward. It needs to either be
+# a physical endpoint (defined using userInfoUri) OR can be bypassed if you use a JSON web token (JWT) that stores
+# information about grants and authentication in the token itself.
+
+# Note that the "/user" endpoint needs to provide the principle of the logged in user (/me endpoint)
+    resource:
+      userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
+      preferTokenInfo: false
+
+# Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
+# the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth
+    username: root
+    password: Tkbl20TT
+    driver-class: com.mysql.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+      
 eureka:
   client:
     serviceUrl:
