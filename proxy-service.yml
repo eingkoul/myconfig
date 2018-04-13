@@ -18,8 +18,7 @@ authserver:
 # requests using zuul
 zuul:
   routes:
-    authentification-service: /api/usagers/**
-    web-portal: /**
+    authentification-service: /api/usagers/**  
     user:
       path: /api/login/**
       stripPrefix: true
