@@ -6,7 +6,7 @@ message: Bonjour de Montreal!!!!!!!! PROXY SIGMI CLIENT
 
 authserver:
     hostname: localhost
-    port: 9025
+    port: 8899
     contextPath: userauth
     
 # Define the routes which determine what URL are serviced by what applications.
@@ -21,7 +21,7 @@ zuul:
     authentification-service: /api/usagers/**  
     declaration-service: /api/declarations/** 
     user:
-      path: /api/login/**
+      path: /api/loggedinuser/**
       stripPrefix: true
       url: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}
 # Define the Eureka server that handles service registration
@@ -56,7 +56,7 @@ spring:
 # Datasource and JPA configuration to be used for using the same tokenstore as the authorization server for
 # the defined resource server. Note that there can't be 2 different root nodes, so datasource falls under the "spring" node.
   datasource:
-    url: jdbc:mysql://localhost:3306/auth
+    url: jdbc:mysql://localhost:3306/usager
     username: root
     password: Tkbl20TT
     driver-class: com.mysql.jdbc.Driver
