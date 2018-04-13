@@ -19,6 +19,7 @@ authserver:
 zuul:
   routes:
     authentification-service: /api/usagers/**  
+    declaration-service: /api/declarations/** 
     user:
       path: /api/login/**
       stripPrefix: true
