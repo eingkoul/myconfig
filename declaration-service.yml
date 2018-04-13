@@ -120,4 +120,14 @@ environments:
            
 message: Bonjour de Montreal!!!!!!!! declarations QWERTY Change AZERTY
 
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 9029
+
     
