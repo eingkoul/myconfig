@@ -19,10 +19,12 @@ authserver:
 # Spring cloud security would need to secure the api gateway before it can route the
 # requests using zuul
 zuul:
-  prefix: api  
+  #prefix: api  
   routes:
-    usager-service: /usagers/**  
-    declaration-service: /declarations/** 
+    usager-service: 
+      path: /api/usagers/**  
+      url: http://localhost:9080//api/usagers
+    declaration-service: /api/declarations/** 
     user:
       path: /login/**
       stripPrefix: true
