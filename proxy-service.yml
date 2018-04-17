@@ -22,7 +22,7 @@ zuul:
   routes:
     usager-service: 
       path: /api/usagers/**  
-      url: http://localhost:9080/api/usagers
+      url: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/api/usagers
     declaration-service: /api/declarations/** 
     user:
       path: /login/**
