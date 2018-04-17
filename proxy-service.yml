@@ -8,7 +8,7 @@ message: Bonjour de Montreal!!!!!!!! PROXY SIGMI CLIENT
 authserver:
   hostname: localhost
   port: 9080
-  contextPath: userauth
+  #  contextPath: userauth
     
 # Define the routes which determine what URL are serviced by what applications.
 # The application/services are defined in the bootstrap.yml file of individual applications
@@ -22,12 +22,13 @@ zuul:
   routes:
     usager-service: 
       path: /api/usagers/**  
-      url: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/api/usagers
+      url: http://localhost:9080/api/usagers
+      #url: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/api/usagers
     declaration-service: /api/declarations/** 
     user:
       path: /login/**
       stripPrefix: true
-      url: http://${authserver.hostname}:${authserver.port}/api/${authserver.contextPath}
+      url: http://${authserver.hostname}:${authserver.port}/api
 # Define the Eureka server that handles service registration
 # Define settings for Single-Sign-On with OAuth2; this means that we need to relay the OAuth token
 # to the subsequent resources that are proxied by the Zuul api gateway.
