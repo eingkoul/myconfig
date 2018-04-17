@@ -21,10 +21,10 @@ authserver:
 zuul:
   prefix: api  
   routes:
-    usager-service: /api/usagers/**  
-    declaration-service: /api/declarations/** 
+    usager-service: /usagers/**  
+    declaration-service: /declarations/** 
     user:
-      path: /api/login/**
+      path: /login/**
       stripPrefix: true
       url: http://${authserver.hostname}:${authserver.port}/api/${authserver.contextPath}
 # Define the Eureka server that handles service registration
