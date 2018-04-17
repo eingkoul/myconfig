@@ -1,15 +1,14 @@
 server:
-    port: 8765
-    contextPath: /
+  port: 8765
 
 message: Bonjour de Montreal!!!!!!!! PROXY SIGMI CLIENT
 
 
 
 authserver:
-    hostname: localhost
-    port: 9080
-    contextPath: userauth
+  hostname: localhost
+  port: 9080
+  contextPath: userauth
     
 # Define the routes which determine what URL are serviced by what applications.
 # The application/services are defined in the bootstrap.yml file of individual applications
