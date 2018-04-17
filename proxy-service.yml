@@ -23,6 +23,7 @@ zuul:
     usager-service: 
       path: /userauth/api/usagers/**  
       url: http://localhost:9080/userauth/api/usagers
+      sensitiveHeaders: Cookie,Set-Cookie
     declaration-service: /api/declarations/** 
     user:
       path: /login/**
