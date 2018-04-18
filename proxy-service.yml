@@ -24,8 +24,9 @@ zuul:
       path: /userauth/api/usagers/**  
       url: http://localhost:9080/userauth/api/usagers
       #sensitiveHeaders: Cookie,Set-Cookie
-    declaration-service: /api/declarations/** 
-    url: http://localhost:9029/api/declarations
+    declaration-service: 
+      path: /api/declarations/** 
+      url: http://localhost:9029/api/declarations
     user:
       path: /login/**
       stripPrefix: true
